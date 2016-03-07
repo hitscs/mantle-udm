@@ -138,10 +138,10 @@ along with this software (see the LICENSE.md file). If not, see
         </master>
     </entity>
     <entity entity-name="Organization" package-name="mantle.party">
-        <field name="partyId" type="id" is-pk="true"/>
-        <field name="organizationName" type="text-medium"/>
-        <field name="officeSiteName" type="text-medium"/>
-        <field name="annualRevenue" type="currency-amount"/>
+        <field name="partyId" type="id" is-pk="true"><description>当事人主键ID</description></field>
+        <field name="organizationName" type="text-medium"><description>组织机构名称</description></field>
+        <field name="officeSiteName" type="text-medium"><description>办公地点名称</description></field>
+        <field name="annualRevenue" type="currency-amount"><description>年收益</description></field>
         <field name="numEmployees" type="number-integer"/>
         <relationship type="one" related-entity-name="mantle.party.Party"/>
         <relationship type="many" title="Owner" related-entity-name="mantle.facility.Facility" short-alias="ownerFacilities">
