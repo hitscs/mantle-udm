@@ -28,13 +28,13 @@ along with this software (see the LICENSE.md file). If not, see
     <!-- ========================================================= -->
 
     <entity entity-name="Party" package-name="mantle.party" short-alias="parties">
-        <field name="partyId" type="id" is-pk="true"/>
-        <field name="pseudoId" type="id" default="partyId"/>
-        <field name="partyTypeEnumId" type="id"/>
-        <field name="disabled" type="text-indicator" enable-audit-log="true"/>
-        <field name="externalId" type="id"/>
-        <field name="dataSourceId" type="id"/>
-        <field name="comments" type="text-long"/>
+        <field name="partyId" type="id" is-pk="true"><description>主键ID</description></field>
+        <field name="pseudoId" type="id" default="partyId"><description>伪ID</description></field>
+        <field name="partyTypeEnumId" type="id"><description>当事人类型的枚举ID</description></field>
+        <field name="disabled" type="text-indicator" enable-audit-log="true"><description>是否可用</description></field>
+        <field name="externalId" type="id"><description>外部标识</description></field>
+        <field name="dataSourceId" type="id"><description>数据源标识</description></field>
+        <field name="comments" type="text-long"><description>注解</description></field>
         <relationship type="one" title="PartyType" related-entity-name="moqui.basic.Enumeration" short-alias="type">
             <key-map field-name="partyTypeEnumId"/></relationship>
         <relationship type="one" related-entity-name="moqui.basic.DataSource"/>
@@ -71,10 +71,10 @@ along with this software (see the LICENSE.md file). If not, see
 
         <seed-data>
             <!-- Party Type -->
-            <moqui.basic.EnumerationType description="Party Type" enumTypeId="PartyType"/>
-            <moqui.basic.Enumeration description="Automated Agent" enumId="PtyAutomatedAgent" enumTypeId="PartyType"/>
-            <moqui.basic.Enumeration description="Person" enumId="PtyPerson" enumTypeId="PartyType"/>
-            <moqui.basic.Enumeration description="Organization" enumId="PtyOrganization" enumTypeId="PartyType"/>
+            <moqui.basic.EnumerationType description="当事人类型" enumTypeId="PartyType"/>
+            <moqui.basic.Enumeration description="自动代理" enumId="PtyAutomatedAgent" enumTypeId="PartyType"/>
+            <moqui.basic.Enumeration description="个人" enumId="PtyPerson" enumTypeId="PartyType"/>
+            <moqui.basic.Enumeration description="组织机构" enumId="PtyOrganization" enumTypeId="PartyType"/>
 
             <!-- _NA_ Party -->
             <Party partyId="_NA_" partyTypeEnumId="PtyPerson"/>
