@@ -142,7 +142,7 @@ along with this software (see the LICENSE.md file). If not, see
         <field name="organizationName" type="text-medium"><description>组织机构名称</description></field>
         <field name="officeSiteName" type="text-medium"><description>办公地点名称</description></field>
         <field name="annualRevenue" type="currency-amount"><description>年收益</description></field>
-        <field name="numEmployees" type="number-integer"/>
+        <field name="numEmployees" type="number-integer"><description>雇员数</description></field>
         <relationship type="one" related-entity-name="mantle.party.Party"/>
         <relationship type="many" title="Owner" related-entity-name="mantle.facility.Facility" short-alias="ownerFacilities">
             <key-map field-name="partyId" related-field-name="ownerPartyId"/></relationship>
@@ -150,23 +150,23 @@ along with this software (see the LICENSE.md file). If not, see
     </entity>
     <entity entity-name="Person" package-name="mantle.party">
         <field name="partyId" type="id" is-pk="true"/>
-        <field name="salutation" type="text-medium"/>
-        <field name="firstName" type="text-medium"/>
-        <field name="middleName" type="text-medium"/>
-        <field name="lastName" type="text-medium" enable-audit-log="true"/>
-        <field name="personalTitle" type="text-medium"/>
-        <field name="suffix" type="text-medium"/>
-        <field name="nickname" type="text-medium"/>
-        <field name="gender" type="text-indicator"/>
-        <field name="birthDate" type="date"/>
-        <field name="deceasedDate" type="date"/>
-        <field name="height" type="number-float"/>
-        <field name="weight" type="number-float"/>
-        <field name="mothersMaidenName" type="text-medium" encrypt="true"/>
-        <field name="maritalStatusEnumId" type="id"/>
-        <field name="employmentStatusEnumId" type="id"/>
-        <field name="residenceStatusEnumId" type="id"/>
-        <field name="occupation" type="text-medium"/>
+        <field name="salutation" type="text-medium"><description>称谓,称呼</description></field>
+        <field name="firstName" type="text-medium"><description>名</description></field>
+        <field name="middleName" type="text-medium"><description>中间名</description></field>
+        <field name="lastName" type="text-medium" enable-audit-log="true"><description>姓</description></field>
+        <field name="personalTitle" type="text-medium"><description>头衔</description></field>
+        <field name="suffix" type="text-medium"><description>后缀</description></field>
+        <field name="nickname" type="text-medium"><description>昵称</description></field>
+        <field name="gender" type="text-indicator"><description>性别</description></field>
+        <field name="birthDate" type="date"><description>出生日期</description></field>
+        <field name="deceasedDate" type="date"><description>死亡日期</description></field>
+        <field name="height" type="number-float"><description>身高</description></field>
+        <field name="weight" type="number-float"><description>体重</description></field>
+        <field name="mothersMaidenName" type="text-medium" encrypt="true"><description>母亲娘家姓</description></field>
+        <field name="maritalStatusEnumId" type="id"><description>婚姻状态外键ID</description></field>
+        <field name="employmentStatusEnumId" type="id"><description>雇佣状态外键ID</description></field>
+        <field name="residenceStatusEnumId" type="id"><description>居住状态外键ID</description></field>
+        <field name="occupation" type="text-medium"><description>职业</description></field>
         <relationship type="one" related-entity-name="mantle.party.Party"/>
         <relationship type="one" title="MaritalStatus" related-entity-name="moqui.basic.Enumeration">
             <key-map field-name="maritalStatusEnumId"/></relationship>
@@ -177,26 +177,26 @@ along with this software (see the LICENSE.md file). If not, see
         <index name="FIRST_NAME_IDX"><index-field name="firstName"/></index>
         <index name="LAST_NAME_IDX"><index-field name="lastName"/></index>
         <seed-data>
-            <moqui.basic.EnumerationType description="Marital Status" enumTypeId="MaritalStatus"/>
-            <moqui.basic.Enumeration description="Single" enumId="MarsSingle" enumTypeId="MaritalStatus"/>
-            <moqui.basic.Enumeration description="Married" enumId="MarsMarried" enumTypeId="MaritalStatus"/>
-            <moqui.basic.Enumeration description="Divorced" enumId="MarsDivorced" enumTypeId="MaritalStatus"/>
-            <moqui.basic.Enumeration description="Widowed/Widower" enumId="MarsWidow" enumTypeId="MaritalStatus"/>
+            <moqui.basic.EnumerationType description="婚姻状况" enumTypeId="MaritalStatus"/>
+            <moqui.basic.Enumeration description="单身" enumId="MarsSingle" enumTypeId="MaritalStatus"/>
+            <moqui.basic.Enumeration description="已婚" enumId="MarsMarried" enumTypeId="MaritalStatus"/>
+            <moqui.basic.Enumeration description="离异" enumId="MarsDivorced" enumTypeId="MaritalStatus"/>
+            <moqui.basic.Enumeration description="丧偶" enumId="MarsWidow" enumTypeId="MaritalStatus"/>
 
-            <moqui.basic.EnumerationType description="Employment Status" enumTypeId="EmploymentStatus"/>
-            <moqui.basic.Enumeration description="Full-time Employed" enumId="EmpsFullTime" enumTypeId="EmploymentStatus"/>
-            <moqui.basic.Enumeration description="Part-time Employed" enumId="EmpsPartTime" enumTypeId="EmploymentStatus"/>
-            <moqui.basic.Enumeration description="Self Employed" enumId="EmpsSelf" enumTypeId="EmploymentStatus"/>
-            <moqui.basic.Enumeration description="House-Person" enumId="EmpsHouse" enumTypeId="EmploymentStatus"/>
-            <moqui.basic.Enumeration description="Retired" enumId="EmpsRetired" enumTypeId="EmploymentStatus"/>
-            <moqui.basic.Enumeration description="Student" enumId="EmpsStudent" enumTypeId="EmploymentStatus"/>
-            <moqui.basic.Enumeration description="Unemployed" enumId="EmpsUnemployed" enumTypeId="EmploymentStatus"/>
+            <moqui.basic.EnumerationType description="雇佣状况" enumTypeId="EmploymentStatus"/>
+            <moqui.basic.Enumeration description="全职" enumId="EmpsFullTime" enumTypeId="EmploymentStatus"/>
+            <moqui.basic.Enumeration description="兼职" enumId="EmpsPartTime" enumTypeId="EmploymentStatus"/>
+            <moqui.basic.Enumeration description="个体经营,自雇" enumId="EmpsSelf" enumTypeId="EmploymentStatus"/>
+            <moqui.basic.Enumeration description="居家" enumId="EmpsHouse" enumTypeId="EmploymentStatus"/>
+            <moqui.basic.Enumeration description="退休" enumId="EmpsRetired" enumTypeId="EmploymentStatus"/>
+            <moqui.basic.Enumeration description="学生" enumId="EmpsStudent" enumTypeId="EmploymentStatus"/>
+            <moqui.basic.Enumeration description="失业" enumId="EmpsUnemployed" enumTypeId="EmploymentStatus"/>
 
-            <moqui.basic.EnumerationType description="Residence Status" enumTypeId="ResidenceStatus"/>
-            <moqui.basic.Enumeration description="Own Home" enumId="RessOwn" enumTypeId="ResidenceStatus"/>
-            <moqui.basic.Enumeration description="Private Tenant" enumId="RessPrivateTenant" enumTypeId="ResidenceStatus"/>
-            <moqui.basic.Enumeration description="Public Tenant" enumId="RessPublicTenant" enumTypeId="ResidenceStatus"/>
-            <moqui.basic.Enumeration description="With Parents" enumId="RessParents" enumTypeId="ResidenceStatus"/>
+            <moqui.basic.EnumerationType description="居住状况" enumTypeId="ResidenceStatus"/>
+            <moqui.basic.Enumeration description="自有住房" enumId="RessOwn" enumTypeId="ResidenceStatus"/>
+            <moqui.basic.Enumeration description="自己租房" enumId="RessPrivateTenant" enumTypeId="ResidenceStatus"/>
+            <moqui.basic.Enumeration description="公租" enumId="RessPublicTenant" enumTypeId="ResidenceStatus"/>
+            <moqui.basic.Enumeration description="与父母同住" enumId="RessParents" enumTypeId="ResidenceStatus"/>
         </seed-data>
     </entity>
 
